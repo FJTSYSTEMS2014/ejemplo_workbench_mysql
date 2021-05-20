@@ -129,6 +129,16 @@ app.put ('/update/:id', (req, res) => {
   });
 });
 
+app.delete("/delete/:id",(req,res)=>{
+const {id}=req.params;
+const sql= `DELETE FROM customers WHERE id=${id}`;
+connection.query(sql,error=>{
+  if(error) throw error;
+  res.send(` El usuario con  Id= ${id} fue eliminando`);
+ console.info(` El usuario con  Id= ${id} fue eliminando`);
+})
+});
+
 // chequeo de conexión
 connection.connect (error => {
   if (error) throw error;
